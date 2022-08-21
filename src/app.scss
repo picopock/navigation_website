@@ -1,0 +1,21 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0; 
+}
+
+:root {
+  --text-color: #fff;
+  --text-hover-color: rgba(107, 19, 158, 0.4);
+  --nav-item-bg-color: #fff;
+  --linear-gradient: linear-gradient(to right bottom,rgba(222,83,71, .6) 0%, rgba(75,138,244, .6) 100%);
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-image: var(--linear-gradient);
+}
