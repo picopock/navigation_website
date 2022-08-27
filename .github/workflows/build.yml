@@ -30,12 +30,11 @@ jobs:
         with:
           node-version: '16'
 
-      - name: Install yarn and build
+      - name: Install and build
         run: |
-          npm install --global yarn
           yarn --version
           yarn install
-          yarn build
+          yarn run build
           
       - name: Archive production artifacts
         uses: actions/upload-artifact@v3
