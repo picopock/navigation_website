@@ -19,7 +19,7 @@ LABEL maintainer="NGINX Docker Maintainers <docker-maint@nginx.com>"
 ENV NGINX_VERSION=1.23.1 \
   NJS_VERSION=0.7.6 \
   PKG_RELEASE=1~bullseye \
-  HOME=/usr/local/webserver/home_navigation
+  HOME=/usr/local/webserver/navigation_website
 
 RUN set -x \
 # create nginx user/group first, to be consistent throughout docker variants
