@@ -8,7 +8,7 @@
   const handleClick = (nav: INavItem) => {
     const isInternal = get(isIntranetStore);
     const link = isInternal ? nav.link : nav.externalLink;
-    window.open(link, '_blank');
+    window.open(link, '_blank', 'noreferrer,noreferrer');
   };
 </script>
 

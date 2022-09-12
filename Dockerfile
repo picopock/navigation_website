@@ -1,7 +1,7 @@
 # build client assets
 FROM node:18-alpine as assetsBuilder
 
-ENV HOME=/usr/local/webserver/home_navigation
+ENV HOME=/usr/local/webserver/navigation_website
 
 WORKDIR ${HOME}
 
@@ -19,7 +19,7 @@ LABEL maintainer="NGINX Docker Maintainers <docker-maint@nginx.com>"
 ENV NGINX_VERSION=1.23.1 \
   NJS_VERSION=0.7.6 \
   PKG_RELEASE=1~bullseye \
-  HOME=/usr/local/webserver/home_navigation
+  HOME=/usr/local/webserver/navigation_website
 
 RUN set -x \
 # create nginx user/group first, to be consistent throughout docker variants
@@ -106,8 +106,8 @@ RUN set -x \
         && rm -rf "$tempDir" /etc/apt/sources.list.d/temp.list; \
     fi \
 # forward request and error logs to docker log collector
-    && ln -sf /dev/stdout /var/log/nginx/access.log \
-    && ln -sf /dev/stderr /var/log/nginx/error.log \
+    # && ln -sf /dev/stdout /var/log/nginx/access.log \
+    # && ln -sf /dev/stderr /var/log/nginx/error.log \
 # create a docker-entrypoint.d directory
     && mkdir /docker-entrypoint.d \
 # copy custom nginx.conf
@@ -116,7 +116,7 @@ RUN set -x \
 
 COPY ./config/docker /
 COPY ./config/nginx /etc/nginx/
-COPY --from=assetsBuilder ${HOME}/public ${HOME}/
+COPY --from=assetsBuilder ${HOME}/build ${HOME}/
 
 ENTRYPOINT ["sh", "/docker-entrypoint.sh"]
 
