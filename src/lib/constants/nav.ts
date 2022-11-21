@@ -37,6 +37,12 @@ export const navItems: INavItem[] = [
     source: 'homeAssistant.svg'
   },
   {
+    name: '思源笔记',
+    link: 'http://10.0.0.16:6806/',
+    externalLink: 'http://10.0.0.16:6806/',
+    source: 'siyuanNote.png'
+  },
+  {
     name: '博客',
     link: 'http://10.0.0.6',
     externalLink: 'http://10.0.0.6',
@@ -44,50 +50,62 @@ export const navItems: INavItem[] = [
   },
   {
     name: 'Synology',
-    link: 'http://10.0.0.6:6000',
-    externalLink: 'http://10.0.0.6:6000',
+    link: 'http://10.0.0.5:5000',
+    externalLink: 'http://10.0.0.5:5000',
     source: 'synology.png'
   },
   {
     name: '相册',
-    link: 'http://10.0.0.6:6001',
-    externalLink: 'http://10.0.0.6:6001',
+    link: 'http://10.0.0.5:5080',
+    externalLink: 'http://10.0.0.5:5080',
     source: 'album.png'
   },
   {
     name: '文件夹',
-    link: 'http://10.0.0.6:6002',
-    externalLink: 'http://10.0.0.6:6002',
+    link: 'http://10.0.0.5:7000',
+    externalLink: 'http://10.0.0.5:7000',
     source: 'file.png'
   },
   {
     name: 'Jellyfin',
-    link: 'http://10.0.0.6:6003',
-    externalLink: 'http://10.0.0.6:6003',
+    link: 'http://10.0.0.12',
+    externalLink: 'http://10.0.0.12',
     source: 'jellyfin.svg'
   },
   {
     name: 'Surveillance',
-    link: 'http://10.0.0.6:6004',
-    externalLink: 'http://10.0.0.6:6004',
+    link: 'http://10.0.0.5:9900',
+    externalLink: 'http://10.0.0.5:9900',
     source: 'surveillanceStation.png'
   },
   {
+    name: 'Nas Tools',
+    link: 'http://10.0.0.14',
+    externalLink: 'http://10.0.0.14',
+    source: 'nasTools.png'
+  },
+  {
     name: '青龙',
-    link: 'http://10.0.0.6:6005',
-    externalLink: 'http://10.0.0.6:6005',
+    link: 'http://10.0.0.15:5700',
+    externalLink: 'http://10.0.0.15:5700',
     source: 'qinglong.png'
   },
   {
     name: 'qBittorrent',
-    link: 'http://10.0.0.6:6006',
-    externalLink: 'http://10.0.0.6:6006',
+    link: 'http://10.0.0.11:8085',
+    externalLink: 'http://10.0.0.11:8085',
     source: 'qBittorrent.png'
   },
   {
     name: 'Portainer',
-    link: 'https://10.0.0.6:6006',
-    externalLink: 'https://10.0.0.6:6006',
+    link: 'https://10.0.0.10:9443',
+    externalLink: 'https://10.0.0.10:9443',
     source: 'portainer.svg'
+  },
+  {
+    name: 'Jackett',
+    link: 'http://10.0.0.13',
+    externalLink: 'http://10.0.0.13',
+    source: 'jackett.png'
   },
 ]
