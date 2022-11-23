@@ -8,4 +8,12 @@ node_modules
 !.env.example
 .vercel
 .output
-.yarn
+vite.config.js.timestamp-*
+vite.config.ts.timestamp-*
+.yarn/*
+!.yarn/patches
+!.yarn/releases
+!.yarn/plugins
+!.yarn/sdks
+!.yarn/versions
+.pnp.*
