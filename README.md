@@ -10,9 +10,17 @@ A static navigation website written in svelte3.
 
   ![Desktop website](./snapshot_desktop.png)
 
+  - Site Switch
+
+    ![Desktop Site Switch](./snapshot_desktop_site_switch.png)
+
 - H5
 
   ![H5 Website](./snapshot_h5.png)
+
+  - Site Switch
+
+    ![H5 Site Switch](./snapshot_h5_site_switch.png)
 
 ## Pre-install
 
@@ -47,46 +55,104 @@ yarn dev -- --open
 
 Customize your navigation page
 
-- Customize website information
+- Customize by modify the build product
+- Customize by modify the source code
 
-  The website information is saved in `src/lib/constants/siteInfo.ts` file
+  - Customize website information
 
-  | Name                  | Desc                                             |
-  | :-------------------- | :----------------------------------------------- |
-  | `siteName`            | Site name                                        |
-  | `siteCopyright`       | Site copyright information                       |
-  | `siteICPFiling`       | Site ICP filing information                      |
-  | `siteICPFilingURL`    | The link of ICP filing query website             |
-  | `sitePoliceFiling`    | Public security filing information of website    |
-  | `sitePoliceFilingURL` | The link of Public security filing query website |
+    The website information is saved in `src/lib/constants/siteInfo.ts` file
 
-- Customize navigation information
+    | Name                  | Desc                                             |
+    | :-------------------- | :----------------------------------------------- |
+    | `siteName`            | Site name                                        |
+    | `siteCopyright`       | Site copyright information                       |
+    | `siteICPFiling`       | Site ICP filing information                      |
+    | `siteICPFilingURL`    | The link of ICP filing query website             |
+    | `sitePoliceFiling`    | Public security filing information of website    |
+    | `sitePoliceFilingURL` | The link of Public security filing query website |
 
-  The navigation information is saved in `src/lib/constants/nav.ts` file
+  - Customize navigation information
 
-  | Nav item field | Desc                                                       |
-  | :------------- | :--------------------------------------------------------- |
-  | `name`         | navigation item name                                       |
-  | `link`         | the intranet link address of navigation item               |
-  | `externalLink` | the extranet link address of navigation item               |
-  | `source`       | navigation item logo. support http(s)、image or svg format |
+    The navigation information is saved in `src/lib/constants/nav.ts` file
 
-  > Note： if the `source` field is not `http(s)` format, such as `jellyfin.svg`, you will need to put `jellyfin.svg` resource into  `static/navIcons/` folder.
+    - Site List Definition
+
+      | Site Item Field | Type   | Desc                                                           |
+      | :-------------- | :----- | :------------------------------------------------------------- |
+      | `name`          | string | Site name                                                      |
+      | `value`         | string | Value of site. It will be use as key field to define site link |
+
+      - Default Site Definition
+
+        - `defaultSiteIndex`
+    
+          The default site index of site list. Start index is `0`, not `1`. Default value is `0`.
+
+    - Nav List Definition
+
+      | Nav Item Field | Type   | Desc                                                       |
+      | :------------- | :----- | :--------------------------------------------------------- |
+      | `name`         | string | Navigation item name                                       |
+      | `link`         | object | The link of all site defined here                          |
+      | `source`       | string | Navigation item logo. support http(s)、image or svg format |
+
+      > Note： if the `source` field is not `http(s)` format, such as `jellyfin.svg`, you will need to put `jellyfin.svg` resource into  `static/navIcons/` folder.
+
+      > Note: if the link of current site is not defined under the `link` field, the nav item will not be show.
+
+    - example
+
+      ```ts
+      export const siteList: ISite[] = [
+        { name: '上海', value: 'shangHai' },
+        { name: '北京', value: 'beiJing' },
+        { name: '广州', value: 'guangZhou' },
+        { name: '深圳', value: 'shenZhen' },
+      ];
+
+      export const navList: INavItem[] = [
+        {
+          name: 'RouterOS',
+          link: {
+            shangHai: 'http://10.0.0.1',
+            beiJing: 'http://10.1.0.1'
+          },
+          source: 'routerOS.png'
+        },
+        {
+          name: 'OpenWRT',
+          link: {
+            shangHai: 'http://10.0.0.2',
+            beiJing: 'http://10.1.0.2'
+          },
+          source: 'openWRT.png'
+        },
+        {
+          name: 'Esxi',
+          link: {
+            shangHai: 'http://10.0.0.3',
+            beiJing: 'http://10.1.0.3',
+            guangZhou: 'http://10.2.0.3',
+          },
+          source: 'esxi.png'
+        },
+        {
+          name: 'K2P',
+          link: {
+            shangHai: 'http://10.0.0.4',
+            beiJing: 'http://10.1.0.4',
+            shenZhen: 'http://10.2.0.4',
+          },
+          source: 'phicomm.png'
+        }
+      ];
+      ```
 
 - Customize Avatar
 
   - put resource into `static/` folder.
 
   - rename resource with `avatar.png`.
-
-- Customize the text of the internal and external network switch buttons
-
-  The switch buttons text is saved in `src/lib/constants/isIntranet.ts` file
-
-  | field      | Desc          |
-  | :--------- | :------------ |
-  | `intranet` | intranet text |
-  | `extranet` | extranet text |
   
 ## Building
 
