@@ -1,19 +1,31 @@
 <script lang="ts">
   import { get } from 'svelte/store';
-  import { navItems } from '$lib/constants/nav';
+  import { onDestroy } from 'svelte';
   import type { INavItem } from '$lib/constants/nav';
   import { isURL } from '$lib/utils/index';
-  import { isIntranetStore } from '$lib/store/isIntranet';
+  import { availableNavListStore, siteStore } from '$lib/store/siteStore';
+
+  let navList = get(availableNavListStore);
+  const unsubscribe = availableNavListStore.subscribe(($navList: INavItem[]) => {
+    navList = $navList;
+  });
+
+  onDestroy(() => {
+    unsubscribe();
+  });
+
 
   const handleClick = (nav: INavItem) => {
-    const isInternal = get(isIntranetStore);
-    const link = isInternal ? nav.link : nav.externalLink;
-    window.open(link, '_blank', 'noreferrer,noreferrer');
+    const site = get(siteStore);
+    const link = nav?.link?.[site?.value || ''];
+    if(link) {
+      window.open(link, '_blank', 'noreferrer,noreferrer');
+    }
   };
 </script>
 
 <div class="nav">
-  {#each navItems as nav}
+  {#each navList as nav}
     <div
       class="nav-item"
       on:click={() => {
