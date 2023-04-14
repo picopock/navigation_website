@@ -1,0 +1,43 @@
+name: release
+
+on:
+  push:
+    tags:
+      - "v*.*.*"
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup Node Version 18
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18.x'
+
+      - name: Install And Build
+        run: |
+          yarn --frozen-lockfile
+          yarn build
+      
+      - name: Get Version
+        id: get_version
+        run: echo "VERSION=${GITHUB_REF/refs\/tags\//}" >> $GITHUB_OUTPUT
+
+      - name: Package files
+        run: |
+          mv ./build ./navigation-website-${{ steps.get_version.outputs.VERSION }}
+          tar -zcvf navigation-website-${{ steps.get_version.outputs.VERSION }}.tar.gz ./navigation-website-${{ steps.get_version.outputs.VERSION }}
+          zip -r navigation-website-${{ steps.get_version.outputs.VERSION }}.zip ./navigation-website-${{ steps.get_version.outputs.VERSION }}
+
+      - name: Release
+        uses: softprops/action-gh-release@v1
+        if: startsWith(github.ref, 'refs/tags/')
+        with:
+          files: ./navigation-website-*
+          draft: false
