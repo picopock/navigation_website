@@ -5,9 +5,7 @@ const config: UserConfig = {
   plugins: [sveltekit()],
   server: {
     fs: {
-      allow: [
-        '.yarn'
-      ]
+      allow: []
     }
   }
 };
