@@ -7,8 +7,8 @@ WORKDIR ${HOME}
 
 COPY . .
 
-RUN yarn install \
-  && NODE_ENV=production yarn build
+RUN pnpm install \
+  && NODE_ENV=production pnpm build
 
 
 # build nginx image

@@ -26,7 +26,7 @@ A static navigation website written in svelte3.
 
 - [Install git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
   
-- [Install yarn](https://classic.yarnpkg.com/lang/en/docs/install/#windows-stable)
+- [Install pnpm](https://www.pnpm.cn/installation)
 
 - Clone the project to local
   
@@ -37,18 +37,18 @@ A static navigation website written in svelte3.
 - Install dependencies
 
   ```bash
-  yarn
+  pnpm install
   ```
 
 ## Developing
 
-Once you've created a project and installed dependencies with `yarn`, start a development server:
+Once you've created a project and installed dependencies with `pnpm`, start a development server:
 
 ```bash
-yarn dev --host
+pnpm dev --host
 
 # or start the server and open the app in a new browser tab
-yarn dev -- --open
+pnpm dev -- --open
 ```
 
 ## Customizing
@@ -161,10 +161,10 @@ Customize your navigation page
   To create a production version of your app:
 
   ```bash
-  yarn build
+  pnpm build
   ```
 
-  You can preview the production build with `yarn preview`.
+  You can preview the production build with `pnpm preview`.
 
 - [Build with github action](https://github.com/picopock/navigation_website/actions)
 
@@ -172,7 +172,7 @@ Customize your navigation page
 
 - Deploy with static resource server
   
-  when you run command `yarn build`, the compile result will be put into `build` folder. Copy all files in the `build` folder to the static resource server.
+  when you run command `pnpm build`, the compile result will be put into `build` folder. Copy all files in the `build` folder to the static resource server.
 
 - Deploy with docker
 
